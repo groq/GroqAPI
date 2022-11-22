@@ -10,4 +10,5 @@ To get started using Groq API, navigate to [support.groq.com](https://support.gr
 
 ## Navigating Groq API
 * [gapi](gapi/): includes example and reference designs demonstrating how to use Groq API
+* [runtime](runtime_api/): includes example on using the C Runtime API from Groq
 * readme.md: this readme.
