@@ -21,6 +21,14 @@ def build_matmul(inp1, inp2):
     # IMPL_DETAIL: setting allocation request to force single hemisphere and slice concurrency.
     t1 = g.from_data(data=inp1, name="A", layout="H1(W), -1, S1")
     t2 = g.from_data(data=inp2, name="B", layout="H1(W), -1, S16")
+
+    # Clear the MXM planes to prep for any matrix multiplications
+    g.clear_mxm(
+        planes=[0, 1, 2, 3],
+        time=-22,  # 20 cycles to clear the MXM, 2 cycles to load the data
+        dtype=t1.dtype,  # set the data type to match the input data
+    )
+
     # Use "matmul" method on the input tensor.
     result_st = t1.matmul(t2, planes=[0], time=20)
     # OR use "matmul" function.
