@@ -31,7 +31,7 @@ values into the vector's inner dimension. The program's result tensor is
 in the default "STRIDED" format to instruct the host runtime to transpose
 the multibyte values back into a serialized format.
 
-    > python unpack_multibyte_tensor.py
+    > python unpack_multibyte.py
 
 5. `gemm.py` :: This example uses default values of shape
 (outer,inner) = (100,100), alpha = 2.3, gamma = 1.5
