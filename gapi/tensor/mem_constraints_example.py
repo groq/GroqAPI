@@ -26,7 +26,7 @@ def compile(shape):
     )
     # Create the Transpose component and mark it as buffered.
     trans_comp = nn.TransposeMatrix(
-        planes=[0, 1], skip_mem_copy=True, is_buffered=True
+        planes=[0, 1], skip_mem_copy=True, is_buffered=True, arith_mode_warmup=True
     )
     # Perform the transpose operation.
     b_t_mt = trans_comp(b, time=0)
@@ -34,7 +34,11 @@ def compile(shape):
     # Declare the MatMul component, mark it as buffered and set its
     # "predecessor" to be the Transpose comp.
     mm = nn.MatMul(
-        planes=[0, 1], use_vxm_accum=True, buffer_output=True, is_buffered=True
+        planes=[0, 1],
+        use_vxm_accum=True,
+        buffer_output=True,
+        is_buffered=True,
+        arith_mode_warmup=True,
     )
 
     # Build matmul

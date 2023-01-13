@@ -42,6 +42,13 @@ def compile_syrk(weight_shape, state_shape, alpha, gamma):
     weight_mt = g.input_tensor(shape=weight_shape, dtype=g.float16, name="weight_mt")
     state_mt = g.input_tensor(shape=state_shape, dtype=g.float32, name="state_mt")
 
+    # Clear the MXM planes to prep for any matrix multiplications
+    g.clear_mxm(
+        planes=[0, 1, 2, 3],
+        time=-22,
+        dtype=g.float16,
+    )
+
     # Instantiate the SYRK component
     syrk_model = nn.SYRK(alpha, gamma, time=0)
     result_mt = syrk_model(weight_mt, state_mt)

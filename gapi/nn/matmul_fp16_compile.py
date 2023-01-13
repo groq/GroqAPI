@@ -41,7 +41,8 @@ def main():
     )
 
     # Instantiate matmul component.
-    mm = nn.MatMul(time=20, buffer_output=True)
+    mm = nn.MatMul(time=20, buffer_output=True, arith_mode_warmup=True)
+
     # ^^ Don't need to select any mxm plane or set the memory layouts.
     # Only thing you need to set is the time at which matmul should be scheduled.
     # Also you can pass buffer_output=True to avoid explicit write to memory.
