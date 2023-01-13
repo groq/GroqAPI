@@ -6,7 +6,7 @@ of the GroqChip™ processor enabling the development of custom applications and
 
 ## Getting Started
 
-To get started using Groq API, navigate to [support.groq.com](https://support.groq.com) to download and install GroqWare™ Suite version 0.9.1.
+To get started using Groq API, navigate to [support.groq.com](https://support.groq.com) to download and install GroqWare™ Suite version 0.9.2.
 
 ## Navigating Groq API
 * [gapi](gapi/): includes example and reference designs demonstrating how to use Groq API
